@@ -1,0 +1,1621 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 导航栏 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    padding: 15px 20px;
+}
+
+.nav-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.nav-logo h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+    color: #1a2533;
+    white-space: nowrap;
+}
+
+.nav-logo .nav-logo-subtitle {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #5a6878;
+    white-space: nowrap;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 30px;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #3498db;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #3498db;
+}
+
+/* 语言下拉菜单 */
+.language-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.language-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.language-btn:hover {
+    background: #2980b9;
+}
+
+.language-btn .fa-chevron-down {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.language-dropdown.active .language-btn .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.language-options {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    min-width: 120px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 9999;
+    margin-top: 5px;
+}
+
+.language-dropdown.active .language-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.language-option {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    border-radius: 8px;
+    margin: 2px;
+}
+
+.language-option:hover {
+    background: #f8f9fa;
+    color: #3498db;
+}
+
+.language-option.active {
+    background: #3498db;
+    color: white;
+}
+
+/* 产品标签按钮样式优化 */
+.product-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.tab-btn {
+    background: white;
+    border: 2px solid #e9ecef;
+    padding: 16px 32px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    color: #4a5568;
+    line-height: 1.4;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+    background: #3498db;
+    border-color: #3498db;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* 页面标题 */
+.page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 120px 0 60px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+}
+
+.page-header p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    color: #fff;
+    text-align: center;
+}
+
+/* 主要内容 */
+main {
+    margin-top: 70px;
+}
+
+/* 轮播图 */
+.hero {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+}
+
+.hero-slider {
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.slide-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.slide-description {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: inline-block;
+    background: white;
+    color: #3498db;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.prev-btn, .next-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: white;
+}
+
+/* 通用区块样式 */
+section {
+    padding: 80px 0;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #2c3e50;
+    font-weight: 300;
+}
+
+/* 关于我们区块 */
+.about-section {
+    background: #f8f9fa;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text h2 {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.learn-more-btn {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.image-placeholder {
+    background: #e9ecef;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: #6c757d;
+}
+
+.image-placeholder i {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+/* 产品展示 */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-card .product-image {
+    width: 80px;
+    height: 80px;
+    background: #3498db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 32px;
+}
+
+.product-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.product-card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.product-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.product-link:hover {
+    color: #2980b9;
+}
+
+/* 优势特色 */
+.features-section {
+    background: #f8f9fa;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.feature-item i {
+    font-size: 48px;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.feature-item h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.feature-item p {
+    color: #666;
+}
+
+/* 页脚 */
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    opacity: 1;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    text-align: center;
+    opacity: 0.6;
+}
+
+/* 关于我们页面样式 */
+.company-intro {
+    background: #f8f9fa;
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.intro-text h2 {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.intro-text p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.intro-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item h3 {
+    font-size: 32px;
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* 时间线 */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #3498db;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: 0;
+    margin-right: 50%;
+    text-align: right;
+    padding-right: 30px;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 50%;
+    margin-right: 0;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.timeline-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -20px;
+    border-left-color: white;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -20px;
+    border-right-color: white;
+}
+
+.timeline-content h3 {
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+/* 企业文化 */
+.culture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.culture-item {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.culture-item:hover {
+    transform: translateY(-5px);
+}
+
+.culture-item i {
+    font-size: 48px;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.culture-item h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.culture-item p {
+    color: #666;
+}
+
+/* 生产设备 */
+.equipment-section {
+    background: #f8f9fa;
+}
+
+.equipment-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.equipment-text h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.equipment-text ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.equipment-text ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+    position: relative;
+    padding-left: 25px;
+}
+
+.equipment-text ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    font-weight: bold;
+}
+
+/* 质量保证 */
+.quality-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.quality-item {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.quality-item i {
+    font-size: 48px;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.quality-item h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.quality-item p {
+    color: #666;
+}
+
+/* 产品页面样式 */
+.product-nav {
+    background: #f8f9fa;
+    padding: 40px 0;
+}
+
+.product-section,
+.product-info,
+.product-description,
+.product-features,
+.product-specs,
+.product-gallery,
+.applications-section,
+.application-item,
+.product-tabs,
+.tab-btn {
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.product-section {
+    display: none;
+    padding: 60px 0;
+}
+
+.product-section.active {
+    display: block;
+}
+
+.product-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.product-info h2 {
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a2533;
+    line-height: 1.3;
+}
+
+.product-description {
+    font-size: 17px;
+    line-height: 1.75;
+    margin-bottom: 35px;
+    color: #4a5568;
+    font-weight: 400;
+    text-align: justify;
+}
+
+.product-features h3,
+.product-specs h3,
+.product-applications h3 {
+    font-size: 22px;
+    margin-bottom: 18px;
+    color: #2c3e50;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.product-features ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 35px;
+}
+
+.product-features ul li {
+    padding: 10px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a5568;
+    font-weight: 400;
+}
+
+.product-features ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e8f0;
+    align-items: center;
+}
+
+.spec-label {
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 15px;
+}
+
+.spec-value {
+    color: #4a5568;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.product-applications {
+    margin-top: 40px;
+}
+
+.product-applications ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.product-applications ul li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a5568;
+    font-weight: 400;
+}
+
+.product-applications ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.product-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.gallery-main {
+    width: 700px;
+    max-width: 100%;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-image {
+    width: 100%;
+    max-width: 700px;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.gallery-thumbs {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    max-width: 900px;
+    margin: 24px auto 0 auto;
+    width: 100%;
+}
+
+.thumb-image {
+    width: 220px;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+/* 应用领域 */
+.applications-section {
+    background: #f8f9fa;
+    padding: 60px 0;
+}
+
+.applications-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a2533;
+    line-height: 1.3;
+}
+
+.applications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.application-item {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.application-item:hover {
+    transform: translateY(-5px);
+}
+
+.application-item i {
+    font-size: 48px;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.application-item h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.application-item p {
+    color: #4a5568;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* 联系我们页面样式 */
+.contact-info-section {
+    background: #f8f9fa;
+}
+
+.contact-info-section .container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+}
+
+.contact-item {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(52,152,219,0.10), 0 1.5px 6px rgba(44,62,80,0.06);
+    padding: 36px 28px 28px 28px;
+    min-width: 220px;
+    max-width: 270px;
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+    text-align: center;
+}
+
+.contact-item:hover {
+    box-shadow: 0 8px 32px rgba(52,152,219,0.18), 0 3px 12px rgba(44,62,80,0.10);
+    transform: translateY(-6px) scale(1.03);
+}
+
+.contact-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 18px;
+    color: #fff;
+    background: #3498db;
+}
+
+/* 移除彩色图标背景 */
+/* .contact-item:nth-child(1) .contact-icon { background: #3498db; }
+.contact-item:nth-child(2) .contact-icon { background: #e67e22; }
+.contact-item:nth-child(3) .contact-icon { background: #27ae60; }
+.contact-item:nth-child(4) .contact-icon { background: #9b59b6; } */
+
+.contact-details h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 12px;
+}
+
+.contact-details p {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 7px;
+    font-weight: 400;
+}
+
+@media (max-width: 900px) {
+    .contact-grid {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+    }
+    .contact-item {
+        max-width: 400px;
+        width: 90%;
+    }
+}
+
+/* 联系表单 */
+.contact-form-section {
+    padding: 80px 0;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.contact-form h2 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.contact-form p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.submit-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #2980b9;
+}
+
+/* 地图 */
+.contact-map h2 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.map-container {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.map-container .map-placeholder {
+    height: 1200px; /* 加大地图高度 */
+    width: 100%;
+}
+
+.map-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+}
+
+.map-container a {
+    display: block;
+    text-decoration: none;
+}
+
+.map-container a:hover img {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.map-placeholder {
+    height: 500px; /* 加大地图高度 */
+    width: 100%;
+    background: #e9ecef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: #6c757d;
+}
+
+.map-placeholder i {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.map-info h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.transport-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.transport-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.transport-item i {
+    color: #3498db;
+    font-size: 20px;
+    margin-top: 2px;
+}
+
+.transport-item h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.transport-item p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* 服务承诺 */
+.service-promise {
+    background: #f8f9fa;
+}
+
+.promise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.promise-item {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.promise-item i {
+    font-size: 48px;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.promise-item h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.promise-item p {
+    color: #666;
+}
+
+/* 常见问题 */
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #f8f9fa;
+}
+
+.faq-question h3 {
+    font-size: 16px;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.faq-question i {
+    color: #3498db;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 20px 20px;
+    max-height: 200px;
+}
+
+.faq-answer p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 20px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 15px 0;
+    }
+
+    .slide-title {
+        font-size: 32px;
+    }
+
+    .slide-description {
+        font-size: 16px;
+    }
+
+    .about-content,
+    .intro-content,
+    .equipment-content,
+    .product-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .intro-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 50px;
+        margin-right: 0;
+        text-align: left;
+        padding-left: 20px;
+        padding-right: 0;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::before,
+    .timeline-item:nth-child(even) .timeline-content::before {
+        left: -20px;
+        right: auto;
+        border-right-color: white;
+        border-left-color: transparent;
+    }
+
+    .product-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab-btn {
+        width: 200px;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .page-header p {
+        font-size: 16px;
+    }
+
+    section h2 {
+        font-size: 28px;
+    }
+
+    .language-dropdown {
+        margin: 10px 0;
+    }
+    
+    .language-options {
+        right: auto;
+        left: 0;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .slide-title {
+        font-size: 24px;
+    }
+
+    .slide-description {
+        font-size: 14px;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .intro-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .products-grid,
+    .features-grid,
+    .culture-grid,
+    .quality-grid,
+    .applications-grid,
+    .promise-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .transport-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* 联系我们页面 - 公司位置与交通指南 */
+.location-guide-section {
+    padding-top: 0;
+    padding-bottom: 60px;
+}
+
+.location-guide-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.location-section {
+    max-width: none;
+    width: 100%;
+}
+
+.location-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.map-container .map-placeholder {
+    height: 1200px; /* 加大地图高度 */
+    width: 100%;
+}
+
+/* 服务承诺与FAQ */
+.service-faq-section {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.service-faq-section .service-promise,
+.service-faq-section .faq-section {
+    margin-bottom: 40px;
+}
+
+.service-faq-section h3 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+@media (max-width: 992px) {
+    .location-section {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .map-container img {
+        /* 保持响应式，无需特殊高度 */
+    }
+}
+
+.contact-form-section { display: none; }
+.contact-map { display: none; }
+.service-promise { display: none; }
+.faq-section { display: none; }
+
+.map-title {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 40px;
+    margin-bottom: 0;
+    color: #2c3e50;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.map-fullwidth {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.map-fullwidth img {
+    width: 100%;
+    max-width: 1500px;
+    min-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 600px) {
+    .map-fullwidth img {
+        width: 98%;
+        max-width: 100vw;
+        min-width: 0;
+    }
+}
+
+.footer-links {
+    margin-left: 80px;
+}
+
+.footer-section p.no-wrap {
+    white-space: nowrap;
+} 
