@@ -33,7 +33,7 @@
     }
     </script>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/logo.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="联系我们 - 佛山市中普铝业有限公司">
@@ -58,6 +58,11 @@
                     <span class="lang-zh">专业铝型材挤压制造商</span>
                     <span class="lang-en" style="display:none;">Professional Aluminum Profile Extrusion Manufacturer</span>
                 </p>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -99,11 +104,6 @@
                     </div>
                 </li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
         </div>
     </nav>
 
@@ -411,12 +411,26 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script src="language-utils.js"></script>
-    
-    <!-- 联系我们页面语言切换功能 -->
     <script>
+        function toggleFAQ(element) {
+            const item = element.closest('.faq-item');
+            if (item) {
+                item.classList.toggle('active');
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            // 汉堡菜单逻辑
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // 语言切换逻辑
             LanguageUtils.initLanguageToggle();
             function updateLangVisibility(lang) {
                 document.querySelectorAll('.lang-zh').forEach(el => {
@@ -425,6 +439,7 @@
                 document.querySelectorAll('.lang-en').forEach(el => {
                     el.style.display = (lang === 'en') ? '' : 'none';
                 });
+                document.documentElement.lang = (lang === 'en') ? 'en' : 'zh-CN';
             }
             const currentLang = LanguageUtils.getCurrentLanguage();
             updateLangVisibility(currentLang);

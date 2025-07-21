@@ -796,6 +796,8 @@ section h2 {
 .product-nav {
     background: #f8f9fa;
     padding: 40px 0;
+    position: relative;
+    z-index: 1;
 }
 
 .product-section,
@@ -969,11 +971,19 @@ section h2 {
     width: 100%;
 }
 
-.thumb-image {
+.product-gallery .gallery-thumbs .thumb-image {
     width: 220px;
     height: 180px;
     object-fit: cover;
     display: block;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.product-gallery .gallery-thumbs .thumb-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 /* 应用领域 */
@@ -1361,31 +1371,85 @@ section h2 {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+    .nav-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-logo h1, .nav-logo h2 {
+        font-size: 18px;
+        white-space: normal !important;
+        line-height: 1.2;
+    }
+    .nav-logo .nav-logo-subtitle {
+        font-size: 12px;
+        white-space: normal;
+    }
     .hamburger {
         display: flex;
-    }
-
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
         flex-direction: column;
-        background-color: white;
-        width: 100%;
-        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        z-index: 1100;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+    .bar {
+        width: 28px;
+        height: 3px;
+        background: #333;
+        margin: 4px 0;
+        border-radius: 2px;
         transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 20px 0;
     }
-
-    .nav-menu.active {
+    .nav-menu {
+        position: absolute;
+        top: 100%;
         left: 0;
+        right: 0;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        z-index: 1001;
+        transition: max-height 0.3s ease;
+        max-height: 0;
     }
-
+    .nav-menu.active {
+        display: flex !important;
+        max-height: 500px;
+        animation: dropdownFadeIn 0.3s;
+    }
+    @keyframes dropdownFadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     .nav-item {
-        margin: 15px 0;
+        margin: 0;
+        border-bottom: 1px solid #f0f0f0;
+        width: 100%;
     }
-
+    .nav-link {
+        display: block;
+        padding: 16px 0;
+        width: 100%;
+        font-size: 18px;
+        text-align: center;
+    }
+    .language-dropdown {
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
     .slide-title {
         font-size: 32px;
     }
@@ -1462,6 +1526,20 @@ section h2 {
         right: auto;
         left: 0;
         min-width: 100px;
+    }
+
+    .gallery-main {
+        width: 100%;
+    }
+
+    .gallery-thumbs {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .thumb-image {
+        width: 100px;
+        height: 80px;
     }
 }
 

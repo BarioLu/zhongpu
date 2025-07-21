@@ -33,7 +33,7 @@
     }
     </script>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/logo.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="首页 - 佛山市中普铝业有限公司">
@@ -58,6 +58,11 @@
                     <span class="lang-zh">专业铝型材挤压制造商</span>
                     <span class="lang-en" style="display:none;">Professional Aluminum Profile Extrusion Manufacturer</span>
                 </p>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -99,11 +104,6 @@
                     </div>
                 </li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
         </div>
     </nav>
 
@@ -351,9 +351,20 @@
     </footer>
 
     <script src="language-utils.js"></script>
-    <script src="script.js"></script>
+    <!-- <script src="script.js" defer></script> -->
     <script>
+        // 最终诊断脚本
         document.addEventListener('DOMContentLoaded', function() {
+            // 汉堡菜单逻辑
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // 语言切换逻辑
             LanguageUtils.initLanguageToggle();
             function updateLangVisibility(lang) {
                 document.querySelectorAll('.lang-zh').forEach(el => {
@@ -361,6 +372,18 @@
                 });
                 document.querySelectorAll('.lang-en').forEach(el => {
                     el.style.display = (lang === 'en') ? '' : 'none';
+                });
+                document.documentElement.lang = (lang === 'en') ? 'en' : 'zh-CN';
+
+                // 更新语言按钮的激活状态
+                const languageOptions = document.querySelectorAll('.language-option');
+                languageOptions.forEach((option) => {
+                    const optionLang = option.getAttribute('data-lang');
+                    if (optionLang === lang) {
+                        option.classList.add('active');
+                    } else {
+                        option.classList.remove('active');
+                    }
                 });
             }
             const currentLang = LanguageUtils.getCurrentLanguage();
@@ -372,57 +395,46 @@
             });
 
             // 轮播图功能
-            const slides = document.querySelectorAll('#hero-slider .slide');
-            const prevBtn = document.getElementById('prev-slide');
-            const nextBtn = document.getElementById('next-slide');
-            const slider = document.getElementById('hero-slider');
-            let current = 0;
-            let timer = null;
-            let isPaused = false;
+            const slider = document.querySelector('.hero-slider');
+            if (slider) {
+                const slides = slider.querySelectorAll('.slide');
+                const prevBtn = slider.querySelector('.prev-btn');
+                const nextBtn = slider.querySelector('.next-btn');
+                let currentSlide = 0;
+                let slideInterval;
 
-            function showSlide(idx) {
-                slides.forEach((slide, i) => {
-                    slide.classList.toggle('active', i === idx);
-                    slide.style.opacity = i === idx ? '1' : '0';
-                    slide.style.zIndex = i === idx ? '1' : '0';
-                });
-                current = idx;
+                function showSlide(n) {
+                    slides.forEach((slide, index) => {
+                        slide.classList.remove('active');
+                        if (index === n) {
+                            slide.classList.add('active');
+                        }
+                    });
+                }
+
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    showSlide(currentSlide);
+                }
+
+                if (prevBtn && nextBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                        showSlide(currentSlide);
+                        clearInterval(slideInterval);
+                        slideInterval = setInterval(nextSlide, 5000);
+                    });
+
+                    nextBtn.addEventListener('click', () => {
+                        nextSlide();
+                        clearInterval(slideInterval);
+                        slideInterval = setInterval(nextSlide, 5000);
+                    });
+                }
+
+                slideInterval = setInterval(nextSlide, 5000);
+                showSlide(currentSlide);
             }
-
-            function nextSlide() {
-                showSlide((current + 1) % slides.length);
-            }
-
-            function prevSlide() {
-                showSlide((current - 1 + slides.length) % slides.length);
-            }
-
-            function startAuto() {
-                timer = setInterval(() => {
-                    if (!isPaused) nextSlide();
-                }, 5000);
-            }
-
-            function stopAuto() {
-                clearInterval(timer);
-            }
-
-            prevBtn.addEventListener('click', () => {
-                prevSlide();
-            });
-            nextBtn.addEventListener('click', () => {
-                nextSlide();
-            });
-
-            slider.addEventListener('mouseenter', () => {
-                isPaused = true;
-            });
-            slider.addEventListener('mouseleave', () => {
-                isPaused = false;
-            });
-
-            showSlide(0);
-            startAuto();
         });
     </script>
 </body>

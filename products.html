@@ -37,7 +37,7 @@
     }
     </script>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -52,6 +52,11 @@
                     <span class="lang-zh">专业铝型材挤压制造商</span>
                     <span class="lang-en" style="display:none;">Professional Aluminum Profile Extrusion Manufacturer</span>
                 </p>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -93,33 +98,20 @@
                     </div>
                 </li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
         </div>
     </nav>
 
-    <!-- 页面标题 -->
-    <section class="page-header">
-        <div class="container">
-            <h1>
-                <span class="lang-zh">产品中心</span>
-                <span class="lang-en" style="display:none;">Products</span>
-            </h1>
-            <p>
-                <span class="lang-zh">高品质铝型材产品，满足您的各种需求</span>
-                <span class="lang-en" style="display:none;">High-quality aluminum profile products to meet your various needs</span>
-            </p>
-        </div>
-    </section>
+    <div style="clear: both;"></div>
 
     <!-- 主要内容 -->
-    <main>
+    <main style="padding-top: 100px;">
         <!-- 产品分类导航 -->
-        <section class="product-nav">
+        <section class="product-tabs-section" style="padding: 40px 0; border-bottom: 1px solid #e2e8f0;">
             <div class="container">
+                <h1 style="text-align: center; font-size: 32px; margin-bottom: 30px; color: #1a2533; font-weight: 600;">
+                    <span class="lang-zh">产品中心</span>
+                    <span class="lang-en" style="display:none;">Products</span>
+                </h1>
                 <div class="product-tabs">
                     <button class="tab-btn active" data-product="decor">
                         <span class="lang-zh">装饰铝型材</span>
@@ -138,7 +130,7 @@
         </section>
 
         <!-- 装饰铝型材产品 -->
-        <section id="decor" class="product-section active">
+        <section id="decor" class="product-section active" style="padding-top: 60px;">
             <div class="container">
                 <div class="product-content">
                     <div class="product-info">
@@ -584,9 +576,18 @@
     </footer>
 
     <script src="language-utils.js"></script>
-    <script src="script.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // 汉堡菜单逻辑
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // 语言切换逻辑
             LanguageUtils.initLanguageToggle();
             function updateLangVisibility(lang) {
                 document.querySelectorAll('.lang-zh').forEach(el => {
@@ -595,7 +596,6 @@
                 document.querySelectorAll('.lang-en').forEach(el => {
                     el.style.display = (lang === 'en') ? '' : 'none';
                 });
-                // 同步 html lang 属性
                 document.documentElement.lang = (lang === 'en') ? 'en' : 'zh-CN';
             }
             const currentLang = LanguageUtils.getCurrentLanguage();
@@ -605,9 +605,8 @@
                 updateLangVisibility(e.detail.language);
                 LanguageUtils.setPageTitle('page_title_products');
             });
-        });
-        // 产品标签切换功能保留
-        function initProductTabs() {
+
+            // 产品标签切换功能
             const tabBtns = document.querySelectorAll('.tab-btn');
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
@@ -616,25 +615,23 @@
                     showProduct(productId);
                 });
             });
-        }
-        function showProduct(productId) {
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-product') === productId) {
-                    btn.classList.add('active');
-                }
-            });
-            const productSections = document.querySelectorAll('.product-section');
-            productSections.forEach(section => {
-                section.classList.remove('active');
-                if (section.id === productId) {
-                    section.classList.add('active');
-                }
-            });
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            initProductTabs();
+            function showProduct(productId) {
+                const tabBtns = document.querySelectorAll('.tab-btn');
+                tabBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-product') === productId) {
+                        btn.classList.add('active');
+                    }
+                });
+                const productSections = document.querySelectorAll('.product-section');
+                productSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === productId) {
+                        section.classList.add('active');
+                    }
+                });
+            }
+            showProduct('decor'); // 默认显示第一个产品
         });
     </script>
 </body>
