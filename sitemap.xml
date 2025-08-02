@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- 首页 -->
+    <url>
+        <loc>https://www.zhongpu-alu.com/index.html</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/logo.png</image:loc>
+            <image:title>Foshan Zhongpu Aluminum Co., Ltd. Logo</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/lunbo.png</image:loc>
+            <image:title>Aluminum Profile Products Showcase</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/lunbo1.png</image:loc>
+            <image:title>Modern Production Facility</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/lunbo2.png</image:loc>
+            <image:title>High Quality Aluminum Profiles</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/factory.jpg</image:loc>
+            <image:title>Modern Factory Production Base</image:title>
+        </image:image>
+    </url>
+    
+    <!-- 关于我们页面 -->
+    <url>
+        <loc>https://www.zhongpu-alu.com/about.html</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/company-photo.jpg</image:loc>
+            <image:title>Company Photo</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/equipment-main.jpg</image:loc>
+            <image:title>Modern Production Workshop</image:title>
+        </image:image>
+    </url>
+    
+    <!-- 产品中心页面 -->
+    <url>
+        <loc>https://www.zhongpu-alu.com/products.html</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/decor-main.jpg</image:loc>
+            <image:title>Aluminum Wave Panel and Great Wall Panel Products</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/decor-thumb1.png</image:loc>
+            <image:title>Aluminum Grille Panel</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/decor-thumb2.png</image:loc>
+            <image:title>Aluminum Great Wall Panel</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/decor-thumb3.png</image:loc>
+            <image:title>Decorative Aluminum Profile Applications</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/industrial-main.png</image:loc>
+            <image:title>Industrial Aluminum Profile Products</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/industrial-thumb1.png</image:loc>
+            <image:title>Industrial Aluminum Profile Thumbnail 1</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/industrial-thumb2.png</image:loc>
+            <image:title>Industrial Aluminum Profile Thumbnail 2</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/industrial-thumb3.jpg</image:loc>
+            <image:title>Industrial Aluminum Profile Thumbnail 3</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/square-main.jpg</image:loc>
+            <image:title>Aluminum Square Tube Products</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/square-thumb1.png</image:loc>
+            <image:title>Aluminum Square Tube Thumbnail 1</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/square-thumb2.jpg</image:loc>
+            <image:title>Aluminum Square Tube Thumbnail 2</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/square-thumb3.jpg</image:loc>
+            <image:title>Aluminum Square Tube Thumbnail 3</image:title>
+        </image:image>
+    </url>
+    
+    <!-- 联系我们页面 -->
+    <url>
+        <loc>https://www.zhongpu-alu.com/contact.html</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://www.zhongpu-alu.com/images/map.png</image:loc>
+            <image:title>Company Location Map</image:title>
+        </image:image>
+    </url>
+    
+</urlset> 

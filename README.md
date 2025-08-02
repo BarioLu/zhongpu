@@ -65,11 +65,12 @@ ZP/
 ├── products.html       # 产品中心页面
 ├── contact.html        # 联系我们页面
 ├── styles.css          # 样式文件
-├── script.js           # JavaScript功能文件
+├── language-utils.js   # 多语言功能文件
 ├── images/             # 图片文件夹
-│   ├── wave/           # 波浪板产品图片
-│   ├── greatwall/      # 长城板产品图片
-│   └── square/         # 铝方管产品图片
+│   ├── decor-*.png     # 装饰铝型材产品图片
+│   ├── industrial-*.png # 工业铝型材产品图片
+│   ├── square-*.jpg    # 铝方管产品图片
+│   └── *.jpg           # 其他产品图片
 └── README.md           # 项目说明文件
 ```
 
@@ -102,7 +103,7 @@ ZP/
 - 支持响应式设计调整
 
 #### 添加新功能
-- 在 `script.js` 中添加新的JavaScript功能
+- 在 `language-utils.js` 中添加新的JavaScript功能
 - 在HTML中调用相应的函数
 - 在CSS中添加相应的样式
 
@@ -150,7 +151,7 @@ ZP/
 
 如有技术问题或需要定制开发，请联系：
 - 邮箱：zhongpualu@outlook.com
-- 电话：0757-XXXXXXXX
+- 电话：+8618957133982
 
 ## 版权信息
 

@@ -282,12 +282,21 @@ const LanguageUtils = {
 
     // 获取当前语言
     getCurrentLanguage() {
-        return localStorage.getItem('currentLanguage') || 'zh';
+        try {
+            const storedLang = localStorage.getItem('currentLanguage');
+            return storedLang || 'en';
+        } catch (error) {
+            return 'en';
+        }
     },
 
     // 设置语言
     setLanguage(lang) {
-        localStorage.setItem('currentLanguage', lang);
+        try {
+            localStorage.setItem('currentLanguage', lang);
+        } catch (error) {
+            // localStorage可能不可用，忽略错误
+        }
         this.currentLang = lang;
     },
 
@@ -301,12 +310,10 @@ const LanguageUtils = {
     updateLanguageButton() {
         // 现在使用分层法，不需要直接修改按钮文本
         // 按钮文本会通过 .lang-zh/.lang-en 的显隐自动切换
-        console.log('Language button updated via layer method');
     },
 
     // 切换语言
     switchLanguage(lang) {
-        console.log('Switching to language:', lang);
         this.setLanguage(lang);
         this.updateLanguageButton();
         
@@ -314,8 +321,40 @@ const LanguageUtils = {
         const dropdowns = document.querySelectorAll('.language-dropdown');
         dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
         
+        // 移动端：隐藏汉堡菜单
+        this.hideMobileMenu();
+        
         // 触发自定义事件，通知页面更新内容
         window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+        
+        // 强制更新显示
+        this.updateLangVisibility(lang);
+    },
+    
+    // 更新语言显示
+    updateLangVisibility(lang) {
+        document.querySelectorAll('.lang-zh').forEach(el => {
+            el.style.display = (lang === 'zh') ? '' : 'none';
+        });
+        document.querySelectorAll('.lang-en').forEach(el => {
+            el.style.display = (lang === 'en') ? '' : 'none';
+        });
+        document.documentElement.lang = (lang === 'en') ? 'en' : 'zh-CN';
+    },
+
+    // 隐藏移动端菜单
+    hideMobileMenu() {
+        const navMenu = document.querySelector('.nav-menu');
+        const hamburger = document.querySelector('.hamburger');
+        
+        if (navMenu && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            
+            // 可选：重置汉堡按钮状态
+            if (hamburger) {
+                hamburger.classList.remove('active');
+            }
+        }
     },
 
     // 初始化语言切换
@@ -361,5 +400,22 @@ const LanguageUtils = {
             title = this.translations.en[pageKey] || document.title;
         }
         document.title = title;
+    },
+
+    // 初始化默认语言
+    initDefaultLanguage() {
+        const currentLang = this.getCurrentLanguage();
+        
+        // 如果没有设置过语言，强制设置为英文
+        try {
+            if (!localStorage.getItem('currentLanguage')) {
+                this.setLanguage('en');
+            }
+        } catch (error) {
+            // localStorage不可用时，直接使用英文
+        }
+        
+        // 立即更新显示
+        this.updateLangVisibility(currentLang);
     }
 }; 
